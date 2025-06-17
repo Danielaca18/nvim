@@ -71,7 +71,11 @@ return {
       ---@type lspconfig.options
       servers = {
         -- pyright will be automatically installed with mason and loaded with lspconfig
-        pyright = {},
+        pyright = {}, -- for Python
+        tsserver = {}, -- for JavaScript/TypeScript
+        lua_ls = {}, -- for Lua
+        rust_analyzer = {}, -- for Rust
+        powershell_es = {}, -- for PowerShell
       },
     },
   },
@@ -191,6 +195,11 @@ return {
         "shellcheck",
         "shfmt",
         "flake8",
+        "pyright",
+        "tsserver",
+        "lua_ls",
+        "rust_analyzer",
+        "powershell_es",
       },
     },
   },
