@@ -6,3 +6,13 @@
 --
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = "*.kbd",
+  callback = function()
+    -- This sends the reload JSON to Kanata's TCP port
+    local cmd = "echo '{\"ReloadConfig\":null}' > /dev/tcp/localhost/5829"
+    os.execute(cmd)
+    vim.notify("Kanata Config Reloaded", vim.log.levels.INFO, { title = "Kanata" })
+  end,
+})
